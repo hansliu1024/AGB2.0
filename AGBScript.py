@@ -373,7 +373,6 @@ def subOurAGB2forq(n, k, h, f, mu, sizeM1, sizeM2, finalcost):
     subgcost = 9999999999
     stepg = repeat * 3
 
-
     if sizeM2[f][mu][d - 2] > 0:
         M2 = decimal.Decimal(sizeM2[f][mu][d - 2])
     else:
@@ -411,7 +410,7 @@ def subOurAGB2forq(n, k, h, f, mu, sizeM1, sizeM2, finalcost):
 
         fprime = 0
         muprime = 0
-        for ff in range(f, 1, -1):
+        for ff in range(f, 0, -1):
 
 
             if step < 0:
@@ -441,17 +440,14 @@ def subOurAGB2forq(n, k, h, f, mu, sizeM1, sizeM2, finalcost):
 
 
                 if sizeM1[fprime][muprime][d - 2] > 0:
-                    M1 = decimal.Decimal(3 * (k + 1 - fprime * muprime)) * decimal.Decimal(
-                        sizeM1[fprime][muprime][d - 2]) ** Decimal(2)
+                    M1 = decimal.Decimal(5.64) * decimal.Decimal(sizeM1[fprime][muprime][d - 2]) ** Decimal(2.8)
                 else:
-                    M1 = decimal.Decimal(3 * (k + 1 - fprime * muprime)) * decimal.Decimal(
-                        M1forq(n, k, h, fprime, muprime, d, sizeM1)) ** Decimal(2)
+                    M1 = decimal.Decimal(5.64) * decimal.Decimal(M1forq(n, k, h, fprime, muprime, d, sizeM1)) ** Decimal(2.8)
 
                 if sizeM2[fprime][muprime][d - 2] > 0:
                     M2 = decimal.Decimal(5.64) * decimal.Decimal(sizeM2[fprime][muprime][d - 2]) ** Decimal(2.8)
                 else:
-                    M2 = decimal.Decimal(5.64) * decimal.Decimal(
-                        M2forq(n, k, h, fprime, muprime, d, sizeM2)) ** Decimal(2.8)
+                    M2 = decimal.Decimal(5.64) * decimal.Decimal(M2forq(n, k, h, fprime, muprime, d, sizeM2)) ** Decimal(2.8)
 
 
                 mm = max(decimal.Decimal(sizeM1[fprime][muprime][d - 2]) - decimal.Decimal(sizeM2[fprime][muprime][d - 2]),1)
@@ -879,11 +875,9 @@ def subOurAGB2for2(n, k, h, f, mu, sizeM1, sizeM2, finalcost):
                     continue
 
                 if sizeM1[fprime][muprime][d - 2] > 0:
-                    M1 = decimal.Decimal(3 * (k + 1 - fprime * muprime)) * decimal.Decimal(
-                        sizeM1[fprime][muprime][d - 2]) ** Decimal(2)
+                    M1 = decimal.Decimal(5.64) * decimal.Decimal(sizeM1[fprime][muprime][d - 2]) ** Decimal(2.8)
                 else:
-                    M1 = decimal.Decimal(3 * (k + 1 - fprime * muprime)) * decimal.Decimal(
-                        M1for2(n, k, h, fprime, muprime, d, sizeM1)) ** Decimal(2)
+                    M1 = decimal.Decimal(5.64) * decimal.Decimal(M1for2(n, k, h, fprime, muprime, d, sizeM1)) ** Decimal(2.8)
 
                 if sizeM2[fprime][muprime][d - 2] > 0:
                     M2 = decimal.Decimal(5.64) * decimal.Decimal(sizeM2[fprime][muprime][d - 2]) ** Decimal(2.8)
@@ -1166,6 +1160,8 @@ def OurAGB2for2(n, k, h):
 
     return round(mincost, 2)
 
+
+
 ##################### Table ###################################
 def table():
     print("==================AGB2.0==================128==========larger=====================" + "\n")
@@ -1176,7 +1172,7 @@ def table():
     print(OurAGB2forq(1024 * 64, 7391, 667))
     print(OurAGB2forq(1024 * 256, 15336, 1312))
     print(OurAGB2forq(1024 * 1024, 32771, 2467))
-    print(OurAGB2forq(1024 * 1024 * 4, 67440, 4788))
+    print(OurAGB2forq(1024 * 1024 * 4, 64770, 4788))
 
     print("==================AGB2.0==================128==========small=====================" + "\n")
 
@@ -1188,7 +1184,7 @@ def table():
     print(OurAGB2forq(1024 * 64, 7391, 389))
     print(OurAGB2forq(1024 * 256, 15336, 760))
     print(OurAGB2forq(1024 * 1024, 32771, 1419))
-    print(OurAGB2forq(1024 * 1024 * 4, 67440, 2735))
+    print(OurAGB2forq(1024 * 1024 * 4, 64770, 2735))
 
     print("==================AGB2.0==================128==========larger=====================" + "\n")
 
@@ -1198,9 +1194,9 @@ def table():
     print(OurAGB2forq(1024 * 64, 7391, 667))
     print(OurAGB2forq(1024 * 256, 15336, 1312))
     print(OurAGB2forq(1024 * 1024, 32771, 2467))
-    print(OurAGB2forq(1024 * 1024 * 4, 67440, 4788))
+    print(OurAGB2forq(1024 * 1024 * 4, 64770, 4788))
 
-    rint("==================AGB2.0==================2==========smaller=====================" + "\n")
+    print("==================AGB2.0==================2==========smaller=====================" + "\n")
 
     print(OurAGB2for2(1024, 652, 57))
     print(OurAGB2for2(1024 * 4, 1589, 98))
@@ -1208,7 +1204,7 @@ def table():
     print(OurAGB2for2(1024 * 64, 7391, 389))
     print(OurAGB2for2(1024 * 256, 15336, 760))
     print(OurAGB2for2(1024 * 1024, 32771, 1419))
-    print(OurAGB2for2(1024 * 1024 * 4, 67440, 2735))
+    print(OurAGB2for2(1024 * 1024 * 4, 64770, 2735))
 
     print("==================AGB2.0==================2==========larger=====================" + "\n")
 
@@ -1233,6 +1229,7 @@ def table():
 
 
 
+table()
 
 #####################      main() function   ###########################
 
